@@ -239,10 +239,10 @@ class Kernel:
         substituter.
 
         """
-        in_file = file(filename)
         parser = ConfigParser()
-        parser.readfp(in_file, filename)
-        in_file.close()
+        with open(filename, "r") as in_file:
+            parser.read_file(in_file, filename)
+
         for s in parser.sections():
             # Add a new WordSub instance for this section.  If one already
             # exists, delete it.
@@ -733,7 +733,7 @@ class Kernel:
         response = ""
         for e in elem[2:]:
             response += self._process_element(e, sessionID)
-        return string.lower(response)
+        return response.lower()
 
     # <person>
     def _process_person(self, elem, sessionID):
@@ -811,9 +811,9 @@ class Kernel:
             response += self._process_element(e, sessionID)
         try:
             response = response.strip()
-            words = string.split(response, " ", 1)
-            words[0] = string.capitalize(words[0])
-            response = string.join(words)
+            words = response.split(" ", 1)
+            words[0] = words[0].capitalize()
+            response = "".join(words)
             return response
         except IndexError:  # response was empty
             return ""
@@ -943,7 +943,7 @@ class Kernel:
         time.sleep(0.01)  # I'm told this works around a potential IOError exception.
         for line in out:
             response += line + "\n"
-        response = string.join(response.splitlines()).strip()
+        response = "".join(response.splitlines()).strip()
         return response
 
     # <template>
@@ -1104,7 +1104,7 @@ class Kernel:
         response = ""
         for e in elem[2:]:
             response += self._process_element(e, sessionID)
-        return string.upper(response)
+        return response.upper()
 
     # <version>
     def _process_version(self, elem, sessionID):

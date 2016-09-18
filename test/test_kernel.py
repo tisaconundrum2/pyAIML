@@ -3,15 +3,15 @@ from __future__ import unicode_literals
 from unittest import TestCase
 import time
 from core_aiml.kernel import Kernel
-
+from os import path
 class TestKernel(TestCase):
     def setUp(self):
-        
+
         self.k = Kernel()
-        self.k.bootstrap(learn_files="self-test.aiml")
+        self.k.learn(path.join("aiml", "self-test.aiml"))
 
     def test_sanity(self):
-        self.assertEquals(self.k.respond('TEST BOT'), "My name is Nameless")
+        self.assertEquals(self.k.respond('test bot'), "My name is Nameless")
 
         self.k.set_predicate('gender', 'male')
         self.assertEquals(self.k.respond('test condition name value'), 'You are handsome')
