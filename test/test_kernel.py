@@ -42,8 +42,8 @@ class TestKernel(TestCase):
         self.assertEquals(self.k.respond("test that"), "I have already answered this question")
 
     def test_person(self):
-        self.assertEquals(self.k.respond('test person'), 'He am a cool guy.')
-        self.assertEquals(self.k.respond('test person2'), 'You am a cool guy.')
+        self.assertEquals(self.k.respond('test person'), 'He is a cool guy.')
+        self.assertEquals(self.k.respond('test person2'), 'You are a cool guy.')
         self.assertEquals(self.k.respond('test person2 I Love Lucy'), 'You Love Lucy')
 
     def test_srai(self):

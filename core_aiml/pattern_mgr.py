@@ -243,13 +243,13 @@ class PatternMgr:
 
         # extract the star words from the original, unmutilated input.
         if foundTheRightStar:
-            # print string.join(pattern.split()[start:end+1])
+            # print(" ".join(pattern.split()[start:end+1]))
             if starType == 'star':
-                return pattern.join(pattern.split()[start:end + 1])
+                return " ".join(pattern.split()[start:end + 1])
             elif starType == 'thatstar':
-                return that.join(that.split()[start:end + 1])
+                return " ".join(that.split()[start:end + 1])
             elif starType == 'topicstar':
-                return topic.join(topic.split()[start:end + 1])
+                return " ".join(topic.split()[start:end + 1])
         else:
             return ""
 

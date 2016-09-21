@@ -68,6 +68,10 @@ defaultPerson = {
     "her": "me",
     "hers": "mine",
     "herself": "myself",
+
+    # to be
+    "am": "is",
+    "is": "am"
 }
 
 defaultPerson2 = {
@@ -83,6 +87,10 @@ defaultPerson2 = {
     "your": "my",
     "yours": "mine",
     "yourself": "myself",
+
+    # to be
+    "am": "are",
+    "are": "am"
 }
 
 # TODO: this list is far from complete
