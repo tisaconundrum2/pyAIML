@@ -37,6 +37,9 @@ class PatternMgr:
         # Collapse a multi-word name into a single word
         self._bot_name = name
 
+    def get_bot_name(self):
+        return self._bot_name
+
     def dump(self):
         """Print all learned patterns, for debugging purposes."""
         pprint.pprint(self._root)
