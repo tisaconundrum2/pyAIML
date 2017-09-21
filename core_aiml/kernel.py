@@ -7,16 +7,16 @@ import random
 import re
 import string
 import sys
-import time
 import threading
+import time
 import xml.sax
 
-from core_aiml import aiml_parser
-from core_aiml import default_subs
-from core_aiml import utils
-from core_aiml.pattern_mgr import PatternMgr
-from core_aiml.word_sub import WordSub
-from aiml_utils.logging_utils import LoggingUtils
+from pyAIML.aiml_utils.logging_utils import LoggingUtils
+from pyAIML.core_aiml import aiml_parser
+from pyAIML.core_aiml import default_subs
+from pyAIML.core_aiml import utils
+from pyAIML.core_aiml.pattern_mgr import PatternMgr
+from pyAIML.core_aiml.word_sub import WordSub
 
 # Python2 Compatability
 try:
@@ -31,9 +31,9 @@ class Kernel:
     _max_history_size = 10  # maximum length of the _inputs and _responses lists
     _max_recursion_depth = 100  # maximum number of recursive <srai>/<sr> tags before the response is aborted.
     # special predicate keys
-    _input_history = "_inputHistory"     # keys to a queue (list) of recent user input
-    _output_history = "_outputHistory"   # keys to a queue (list) of recent responses.
-    _input_stack = "_inputStack"         # Should always be empty in between calls to respond()
+    _input_history = "_inputHistory"  # keys to a queue (list) of recent user input
+    _output_history = "_outputHistory"  # keys to a queue (list) of recent responses.
+    _input_stack = "_inputStack"  # Should always be empty in between calls to respond()
 
     def __init__(self):
         self.log = LoggingUtils().log
@@ -256,7 +256,7 @@ class Kernel:
             # Add a new WordSub instance for this section.  If one already
             # exists, delete it.
             if self._subbers.get(s):
-                del(self._subbers[s])
+                del (self._subbers[s])
             self._subbers[s] = WordSub()
             # iterate over the key,value pairs and add them to the subber
             for k, v in parser.items(s):
@@ -369,7 +369,7 @@ class Kernel:
             final_response += (response + "  ")
         final_response = final_response.strip()
 
-        assert(len(self.get_predicate(self._input_stack, sessionID)) == 0)
+        assert (len(self.get_predicate(self._input_stack, sessionID)) == 0)
 
         # release the lock and return
         self._respondLock.release()
@@ -456,9 +456,9 @@ class Kernel:
             return ""
         return handler_func(elem, sessionID)
 
-######################################################
-# Individual element-processing functions follow     #
-######################################################
+    ######################################################
+    # Individual element-processing functions follow     #
+    ######################################################
 
     # <bot>
     def _process_bot(self, elem, sessionID):
