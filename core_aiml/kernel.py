@@ -179,6 +179,14 @@ class Kernel:
         if self._verbose_mode:
             self.log.debug("done ({0} seconds)".format(time.clock() - start))
 
+    def get_name(self):
+        """Get the name of the bot"""
+        return self._brain.get_bot_name()
+
+    def set_name(self, name):
+        """Set the name of the bot"""
+        self._brain.set_bot_name(name)
+
     def get_predicate(self, name, sessionID=_global_sessionID):
         """Retrieve the current value of the predicate 'name' from the
         specified session.
