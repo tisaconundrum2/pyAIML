@@ -4,7 +4,7 @@ import xml.sax
 import xml.sax.handler
 import sys
 
-from aiml_utils.logging_utils import LoggingUtils
+from pyAIML.aiml_utils.logging_utils import LoggingUtils
 
 # Python2 Compatability
 try:
